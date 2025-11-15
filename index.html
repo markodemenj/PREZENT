@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Bioactive Scaffolds for Wound Healing - Medical Conference Presentation</title>
+    <style>
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Medical Conference Colors */
+  --color-medical-blue: #003A70;
+  --color-accent-teal: #00A9CE;
+  --color-clinical-red: #D32F2F;
+  --color-light-bg: #F5F5F5;
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+
+  /* Spacing */
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-base: 8px;
+  --radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-light-bg: rgba(255, 255, 255, 0.05);
+  }
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-base);
+    background-color: var(--color-charcoal-700);
+    color: var(--color-text);
+    overflow: hidden;
+}
+
+.presentation-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.slide-viewer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-charcoal-700);
+    padding: var(--space-32);
+}
+
+.slide {
+    width: 1200px;
+    height: 675px;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 48px 60px;
+    display: none;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide.active {
+    display: flex;
+}
+
+.slide-header {
+    margin-bottom: 32px;
+}
+
+.slide-title {
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--color-medical-blue);
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.slide-subtitle {
+    font-size: 24px;
+    color: var(--color-accent-teal);
+    font-weight: 500;
+}
+
+.slide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.slide-footer {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 2px solid var(--color-light-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--color-slate-500);
+}
+
+/* Title Slide Styles */
+.title-slide .slide-content {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main-title {
+    font-size: 56px;
+    color: var(--color-medical-blue);
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.1;
+}
+
+.authors {
+    font-size: 24px;
+    color: var(--color-slate-900);
+    margin-bottom: 12px;
+}
+
+.institution {
+    font-size: 20px;
+    color: var(--color-slate-500);
+    margin-bottom: 32px;
+}
+
+.conference-info {
+    font-size: 18px;
+    color: var(--color-accent-teal);
+    font-weight: 500;
+}
+
+/* Statistics Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 24px 0;
+}
+
+.stat-card {
+    background: var(--color-light-bg);
+    padding: 20px;
+    border-radius: var(--radius-base);
+    border-left: 4px solid var(--color-accent-teal);
+}
+
+.stat-card.critical {
+    border-left-color: var(--color-clinical-red);
+}
+
+.stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-medical-blue);
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: var(--color-slate-500);
+    line-height: 1.4;
+}
+
+/* Comparison Table */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 15px;
+}
+
+.comparison-table th {
+    background: var(--color-medical-blue);
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.comparison-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.comparison-table tr:nth-child(even) {
+    background: var(--color-light-bg);
+}
+
+.limitation-badge {
+    display: inline-block;
+    background: #ffebee;
+    color: var(--color-clinical-red);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    margin: 2px;
+}
+
+/* List Styles */
+.bullet-list {
+    list-style: none;
+    padding: 0;
+}
+
+.bullet-list li {
+    padding: 10px 0 10px 32px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-slate-900);
+}
+
+.bullet-list li:before {
+    content: "•";
+    position: absolute;
+    left: 8px;
+    color: var(--color-accent-teal);
+    font-size: 24px;
+}
+
+/* Component Cards */
+.component-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.component-card {
+    background: var(--color-light-bg);
+    padding: 20px;
+    border-radius: var(--radius-base);
+    text-align: center;
+}
+
+.component-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-medical-blue);
+    margin-bottom: 8px;
+}
+
+.component-percentage {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-accent-teal);
+    margin: 8px 0;
+}
+
+.component-function {
+    font-size: 14px;
+    color: var(--color-slate-500);
+    line-height: 1.4;
+}
+
+/* Bioactive Agent Cards */
+.agent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.agent-card {
+    padding: 20px;
+    border-radius: var(--radius-base);
+    border: 2px solid;
+}
+
+.agent-card.allantoin {
+    background: #e3f2fd;
+    border-color: #2196F3;
+}
+
+.agent-card.caffeic {
+    background: #fff3e0;
+    border-color: #FF9800;
+}
+
+.agent-card.quercetin {
+    background: #f3e5f5;
+    border-color: #9C27B0;
+}
+
+.agent-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.agent-card.allantoin .agent-name {
+    color: #1976D2;
+}
+
+.agent-card.caffeic .agent-name {
+    color: #F57C00;
+}
+
+.agent-card.quercetin .agent-name {
+    color: #7B1FA2;
+}
+
+.agent-phase {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-slate-900);
+}
+
+.agent-mechanisms {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--color-slate-900);
+}
+
+/* Image Container */
+.image-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: var(--radius-base);
+    box-shadow: var(--shadow-md);
+}
+
+.image-caption {
+    font-size: 13px;
+    color: var(--color-slate-500);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* Chart Container */
+.chart-container {
+    margin: 20px 0;
+    height: 350px;
+    position: relative;
+}
+
+/* Navigation */
+.controls {
+    background: var(--color-charcoal-800);
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius-base);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-family-base);
+}
+
+.btn-primary {
+    background: var(--color-accent-teal);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0090b3;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.slide-indicator {
+    color: white;
+    font-size: 16px;
+}
+
+.toggle-notes {
+    background: var(--color-medical-blue);
+    color: white;
+}
+
+/* Speaker Notes Panel */
+.speaker-notes-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: white;
+    border-top: 2px solid var(--color-accent-teal);
+    overflow: hidden;
+    transition: height 0.3s ease;
+    z-index: 1000;
+}
+
+.speaker-notes-panel.open {
+    height: 40vh;
+}
+
+.notes-content {
+    padding: 24px 32px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.notes-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-medical-blue);
+    margin-bottom: 16px;
+}
+
+.notes-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-slate-900);
+}
+
+.notes-text p {
+    margin-bottom: 12px;
+}
+
+.notes-text ul {
+    margin-left: 20px;
+    margin-bottom: 12px;
+}
+
+.notes-text li {
+    margin-bottom: 8px;
+}
+
+/* Wound Type Cards */
+.wound-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.wound-card {
+    padding: 16px;
+    border-radius: var(--radius-base);
+    border-left: 4px solid;
+}
+
+.wound-card.burns {
+    background: #ffebee;
+    border-left-color: #D32F2F;
+}
+
+.wound-card.diabetic {
+    background: #e3f2fd;
+    border-left-color: #1976D2;
+}
+
+.wound-card.venous {
+    background: #f3e5f5;
+    border-left-color: #7B1FA2;
+}
+
+.wound-card.surgical {
+    background: #e8f5e9;
+    border-left-color: #388E3C;
+}
+
+.wound-type {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-slate-900);
+}
+
+.wound-stats {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-slate-900);
+}
+
+.wound-stats strong {
+    color: var(--color-medical-blue);
+}
+
+/* Advantages Grid */
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.advantage-card {
+    background: var(--color-light-bg);
+    padding: 16px;
+    border-radius: var(--radius-base);
+    border-top: 3px solid var(--color-accent-teal);
+}
+
+.advantage-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.advantage-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-medical-blue);
+    margin-bottom: 8px;
+}
+
+.advantage-text {
+    font-size: 14px;
+    color: var(--color-slate-900);
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+    .slide {
+        width: 1000px;
+        height: 562px;
+        padding: 40px 50px;
+    }
+    
+    .main-title {
+        font-size: 48px;
+    }
+    
+    .slide-title {
+        font-size: 36px;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-slate-500);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-slate-900);
+}
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide-viewer">
+            <!-- Slide 1: Title -->
+            <div class="slide active title-slide" data-slide="1">
+                <div class="slide-content">
+                    <h1 class="main-title">Multi-Bioactive Graphene Oxide/Gelatin/Alginate Scaffolds for Wound Healing</h1>
+                    <p class="authors">Medical Conference Presentation</p>
+                    <p class="institution">Advanced Dermatologic Wound Care &amp; Tissue Engineering</p>
+                    <p class="conference-info">8-Minute Clinical Research Presentation</p>
+                </div>
+                <div class="slide-footer">
+                    <span>Multi-Bioactive Scaffolds</span>
+                    <span>Slide 1 of 12</span>
+                </div>
+            </div>
+
+            <!-- Slide 2: Chronic Wound Epidemiology -->
+            <div class="slide" data-slide="2">
+                <div class="slide-header">
+                    <h2 class="slide-title">The Clinical Challenge</h2>
+                    <p class="slide-subtitle">Chronic Wound Epidemiology &amp; Burden</p>
+                </div>
+                <div class="slide-content">
+                    <div class="stats-grid">
+                        <div class="stat-card critical">
+                            <div class="stat-value">18.6M</div>
+                            <div class="stat-label">Diabetic foot ulcers worldwide annually<br>30% 5-year mortality rate</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">500K-600K</div>
+                            <div class="stat-label">Venous ulcers in USA<br>50-76% recurrence rate</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">21.5%</div>
+                            <div class="stat-label">Pressure ulcer prevalence in ICU<br>60,000 annual deaths</div>
+                        </div>
+                        <div class="stat-card critical">
+                            <div class="stat-value">$28-32B</div>
+                            <div class="stat-label">Annual cost to US Medicare<br>8.2 million beneficiaries affected</div>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="https://shieldhealthcare.com/community/wp-content/uploads/2024/09/Stages-of-Healing_image-scaled.jpg" alt="Wound healing phases">
+                        <p class="image-caption">Four main phases of wound healing: Hemostasis, Inflammatory, Proliferative, and Remodeling</p>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Chronic Wound Epidemiology</span>
+                    <span>Slide 2 of 12</span>
+                </div>
+            </div>
+
+            <!-- Slide 3: Single-Target Treatments -->
+            <div class="slide" data-slide="3">
+                <div class="slide-header">
+                    <h2 class="slide-title">Single-Target Treatments</h2>
+                    <p class="slide-subtitle">Critical Limitations of Conventional Approaches</p>
+                </div>
+                <div class="slide-content">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Treatment</th>
+                                <th>Mechanism</th>
+                                <th>Phase Coverage</th>
+                                <th>Key Limitations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Silver Alginate</strong></td>
+                                <td>Antimicrobial ions</td>
+                                <td>Inflammation only</td>
+                                <td><span class="limitation-badge">7-day max</span> <span class="limitation-badge">No angiogenesis</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Povidone-Iodine</strong></td>
+                                <td>Bacterial killing</td>
+                                <td>Inflammation only</td>
+                                <td><span class="limitation-badge">Short residence</span> <span class="limitation-badge">Debriding only</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gauze Dressings</strong></td>
+                                <td>Physical barrier</td>
+                                <td>Hemostasis only</td>
+                                <td><span class="limitation-badge">No moist environment</span> <span class="limitation-badge">Painful removal</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hydrocolloid</strong></td>
+                                <td>Moisture management</td>
+                                <td>Proliferation (partial)</td>
+                                <td><span class="limitation-badge">Fiber deposition</span> <span class="limitation-badge">No antimicrobial</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Foam Dressings</strong></td>
+                                <td>Absorption</td>
+                                <td>Proliferation (partial)</td>
+                                <td><span class="limitation-badge">No bioactive support</span> <span class="limitation-badge">Single function</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="stats-grid" style="margin-top: 20px;">
+                        <div class="stat-card">
+                            <div class="stat-value">57.3%</div>
+                            <div class="stat-label">Conventional therapy healing rate at 12 weeks</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">81.3%</div>
+                            <div class="stat-label">Emerging multi-target therapy healing rate at 12 weeks</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Single-Target Treatment Limitations</span>
+                    <span>Slide 3 of 12</span>
+                </div>
+            </div>
+
+            <!-- Slide 4: The Solution -->
+            <div class="slide" data-slide="4">
+                <div class="slide-header">
+                    <h2 class="slide-title">The Solution</h2>
+                    <p class="slide-subtitle">Dual ECM-Mimetic Approach</p>
+                </div>
+                <div class="slide-content">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0;">
+                        <div style="background: #e3f2fd; padding: 24px; border-radius: 8px; border-left: 4px solid #1976D2;">
+                            <h3 style="font-size: 24px; color: #1976D2; margin-bottom: 16px; font-weight: 600;">Structural Support</h3>
+                            <p style="font-size: 16px; margin-bottom: 12px; color: var(--color-slate-900);"><strong>ECM-Mimetic Architecture</strong></p>
+                            <ul class="bullet-list" style="font-size: 15px;">
+                                <li style="font-size: 15px;">93-96% porosity (matches native tissue)</li>
+                                <li style="font-size: 15px;">Vertical porous structure</li>
+                                <li style="font-size: 15px;">Cell adhesion via RGD sequences</li>
+                                <li style="font-size: 15px;">Mechanical reinforcement with GO</li>
+                            </ul>
+                        </div>
+                        <div style="background: #fff3e0; padding: 24px; border-radius: 8px; border-left: 4px solid #FF9800;">
+                            <h3 style="font-size: 24px; color: #F57C00; margin-bottom: 16px; font-weight: 600;">Biochemical Stimulation</h3>
+                            <p style="font-size: 16px; margin-bottom: 12px; color: var(--color-slate-900);"><strong>Multi-Target Bioactive Release</strong></p>
+                            <ul class="bullet-list" style="font-size: 15px;">
+                                <li style="font-size: 15px;">Triple agent simultaneous release</li>
+                                <li style="font-size: 15px;">All three healing phases covered</li>
+                                <li style="font-size: 15px;">72-hour sustained delivery</li>
+                                <li style="font-size: 15px;">Synergistic therapeutic action</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1759118811/pplx_project_search_images/eda6daea636c8c5a40f44e5ca07d3c43c3a0abd8.png" alt="Fibroblast and ECM structure" style="max-height: 250px;">
+                        <p class="image-caption">Extracellular matrix mimicry: Fibroblast interaction with collagen and ECM components</p>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Dual ECM-Mimetic Approach</span>
+                    <span>Slide 4 of 12</span>
+                </div>
+            </div>
+
+            <!-- Slide 5: Scaffold Composition -->
+            <div class="slide" data-slide="5">
+                <div class="slide-header">
+                    <h2 class="slide-title">Scaffold Composition</h2>
+                    <p class="slide-subtitle">Interpenetrating Polymer Network Components</p>
+                </div>
+                <div class="slide-content">
+                    <div class="component-grid">
+                        <div class="component-card">
+                            <div class="component-title">Gelatin</div>
+                            <div class="component-percentage">40%</div>
+                            <div class="component-function">Type A (porcine)<br>Contains RGD sequences<br>Cell adhesion &amp; proliferation</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="component-title">Sodium Alginate</div>
+                            <div class="component-percentage">35%</div>
+                            <div class="component-function">Marine polysaccharide<br>Hydrophilicity &amp; antibacterial<br>Porosity enhancement</div>
+                        </div>
+                        <div class="component-card">
+                            <div class="component-title">Graphene Oxide</div>
+                            <div class="component-percentage">5-10%</div>
+                            <div class="component-function">Nanoparticle reinforcement<br>Angiogenic properties<br>Antimicrobial effects</div>
+                        </div>
+                    </div>
+                    <div style="background: var(--color-light-bg); padding: 24px; border-radius: 8px; margin: 20px 0;">
+                        <h3 style="font-size: 20px; color: var(--color-medical-blue); margin-bottom: 16px;">Manufacturing Process</h3>
+                        <div style="display: flex; align-items: center; justify-content: space-around; font-size: 16px;">
+                            <span style="font-weight: 600;">Component Mixing</span>
+                            <span style="color: var(--color-accent-teal); font-size: 24px;">→</span>
+                            <span style="font-weight: 600;">EDC Crosslinking</span>
+                            <span style="color: var(--color-accent-teal); font-size: 24px;">→</span>
+                            <span style="font-weight: 600;">Lyophilization</span>
+                            <span style="color: var(--color-accent-teal); font-size: 24px;">→</span>
+                            <span style="font-weight: 600;">93-96% Porosity</span>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1755763458/pplx_project_search_images/d585aae9cd30beee8889a497813b773cc76ece22.png" alt="3D scaffold structure" style="max-height: 200px;">
+                        <p class="image-caption">SEM imaging of porous scaffold architecture showing ECM-mimetic structure</p>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Scaffold Composition</span>
+                    <span>Slide 5 of 12</span>
+                </div>
+            </div>
+
+            <!-- Slide 6: Triple Bioactive Agents -->
+            <div class="slide" data-slide="6">
+                <div class="slide-header">
+                    <h2 class="slide-title">Triple-Action Bioactive Agents</h2>
+                    <p class="slide-subtitle">Comprehensive Phase Coverage</p>
+                </div>
+                <div class="slide-content">
+                    <div class="agent-grid">
+                        <div class="agent-card allantoin">
+                            <div class="agent-name">ALLANTOIN</div>
+                            <div class="agent-phase">Target: Inflammation → Proliferation</div>
+                            <div class="agent-mechanisms">
+                                <strong>Mechanisms:</strong><br>
+                                • Modulates inflammation<br>
+                                • Promotes granulation tissue<br>
+                                • Stimulates fibroblasts<br>
+                                • Enhances collagen synthesis<br><br>
+                                <strong>Release:</strong> 38-46% over 72h
+                            </div>
+                        </div>
+                        <div class="agent-card caffeic">
+                            <div class="agent-name">CAFFEIC ACID</div>
+                            <div class="agent-phase">Target: Proliferation</div>
+                            <div class="agent-mechanisms">
+                                <strong>Mechanisms:</strong><br>
+                                • Antioxidant protection<br>
+                                • Reduces oxidative stress<br>
+                                • Improves re-epithelialization<br>
+                                • Anti-inflammatory<br><br>
+                                <strong>Release:</strong> 52-62% over 72h
+                            </div>
+                        </div>
+                        <div class="agent-card quercetin">
+                            <div class="agent-name">QUERCETIN</div>
+                            <div class="agent-phase">Target: Remodeling</div>
+                            <div class="agent-mechanisms">
+                                <strong>Mechanisms:</strong><br>
+                                • Antifibrotic activity<br>
+                                • Prevents hypertrophic scars<br>
+                                • Prevents keloid formation<br>
+                                • Modulates collagen deposition<br><br>
+                                <strong>Release:</strong> 80-92% over 72h
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: var(--color-light-bg); padding: 20px; border-radius: 8px; margin-top: 20px; text-align: center;">
+                        <p style="font-size: 18px; color: var(--color-medical-blue); font-weight: 600;">Biphasic Release Profile</p>
+                        <p style="font-size: 16px; color: var(--color-slate-900); margin-top: 8px;">Rapid initial release (0-6 hours) followed by sustained release (6-72 hours) ensures continuous therapeutic coverage throughout all healing phases</p>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Triple Bioactive Agents</span>
+                    <span>Slide 6 of 12</span>
+                </div>
+            </div>
+
+            <!-- Slide 7: Release Kinetics -->
+            <div class="slide" data-slide="7">
+                <div class="slide-header">
+                    <h2 class="slide-title">Release Kinetics &amp; Multi-Target Coverage</h2>
+                    <p class="slide-subtitle">Synchronized Bioactive Delivery</p>
+                </div>
+                <div class="slide-content">
+                    <div class="chart-container">
+                        <canvas id="releaseChart"></canvas>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px;">
+                        <div style="background: #e3f2fd; padding: 12px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 13px; color: #1976D2; font-weight: 600;">ALLANTOIN</div>
+                            <div style="font-size: 12px; color: var(--color-slate-900); margin-top: 4px;">Initial: 3.79-4.59 mg/h<br>Sustained: 0.49-0.56 mg/h</div>
+                        </div>
+                        <div style="background: #fff3e0; padding: 12px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 13px; color: #F57C00; font-weight: 600;">CAFFEIC ACID</div>
+                            <div style="font-size: 12px; color: var(--color-slate-900); margin-top: 4px;">Initial: 5.18-6.22 mg/h<br>Sustained: 0.34-0.44 mg/h</div>
+                        </div>
+                        <div style="background: #f3e5f5; padding: 12px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 13px; color: #7B1FA2; font-weight: 600;">QUERCETIN</div>
+                            <div style="font-size: 12px; color: var(--color-slate-900); margin-top: 4px;">Initial: 7.99-9.19 mg/h<br>Sustained: 0.07-0.18 mg/h</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Release Kinetics</span>
+                    <span>Slide 7 of 12</span>
+                </div>
+            </div>
+
+            <!-- Slide 8: Clinical Properties -->
+            <div class="slide" data-slide="8">
+                <div class="slide-header">
+                    <h2 class="slide-title">Clinical Properties &amp; Characterization</h2>
+                    <p class="slide-subtitle">Scaffold Performance Metrics</p>
+                </div>
+                <div class="slide-content">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Scaffold Value</th>
+                                <th>Native Skin</th>
+                                <th>Clinical Significance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Porosity</strong></td>
+                                <td>93-96%</td>
+                                <td>~90%</td>
+                                <td>Comparable to native tissue, optimal cell infiltration</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Young's Modulus</strong></td>
+                                <td>1.10-2.90 MPa</td>
+                                <td>0.4-20 MPa</td>
+                                <td>Matches skin elasticity range</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Swelling Capacity</strong></td>
+                                <td>11-23x</td>
+                                <td>N/A</td>
+                                <td>Superior exudate absorption, prevents maceration</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contact Angle</strong></td>
+                                <td>&lt;90°</td>
+                                <td>~70°</td>
+                                <td>Hydrophilic, promotes cell adhesion</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Adhesion</strong></td>
+                                <td>Spontaneous</td>
+                                <td>N/A</td>
+                                <td>No sutures required, 0-120° joint mobility</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-top: 20px; display: flex; gap: 16px;">
+                        <div style="flex: 1;">
+                            <div class="image-container">
+                                <img src="https://pplx-res.cloudinary.com/image/upload/v1755763458/pplx_project_search_images/d585aae9cd30beee8889a497813b773cc76ece22.png" alt="Scaffold SEM" style="max-height: 200px;">
+                                <p class="image-caption">SEM analysis showing porous architecture</p>
+                            </div>
+                        </div>
+                        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                            <div style="background: #e8f5e9; padding: 16px; border-radius: 8px; border-left: 4px solid #388E3C;">
+                                <h4 style="font-size: 16px; color: #2E7D32; margin-bottom: 8px;">Key Advantage</h4>
+                                <p style="font-size: 14px; color: var(--color-slate-900);">Spontaneous adhesion eliminates need for sutures while maintaining flexibility at joint angles 0-120°, enabling application across diverse anatomical sites</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Clinical Properties</span>
+                    <span>Slide 8 of 12</span>
+                </div>
+            </div>
+
+            <!-- Slide 9: Clinical Applications -->
+            <div class="slide" data-slide="9">
+                <div class="slide-header">
+                    <h2 class="slide-title">Clinical Applications in Dermatology</h2>
+                    <p class="slide-subtitle">Wound Type-Specific Outcomes</p>
+                </div>
+                <div class="slide-content">
+                    <div class="wound-grid">
+                        <div class="wound-card burns">
+                            <div class="wound-type">🔥 BURNS</div>
+                            <div class="wound-stats">
+                                <strong>Prevalence:</strong> 450,000 treated annually (USA)<br>
+                                <strong>Severity:</strong> 30,000 require burn center admission<br>
+                                <strong>Scaffold Benefits:</strong><br>
+                                • 35-day closure time<br>
+                                • Reduced autografting needs<br>
+                                • Lower infection rates with GO<br>
+                                • Integra® precedent (FDA-approved 30+ years)
+                            </div>
+                        </div>
+                        <div class="wound-card diabetic">
+                            <div class="wound-type">🩺 DIABETIC FOOT ULCERS</div>
+                            <div class="wound-stats">
+                                <strong>Prevalence:</strong> 18.6M worldwide, 1.6M USA annually<br>
+                                <strong>Mortality:</strong> 30% at 5 years, 70% with amputation<br>
+                                <strong>Scaffold Benefits:</strong><br>
+                                • 73-97% healing rates vs. 50-60% conventional<br>
+                                • RGD sequences promote cell adhesion<br>
+                                • Antibacterial + angiogenic support<br>
+                                • Amputation risk reduction
+                            </div>
+                        </div>
+                        <div class="wound-card venous">
+                            <div class="wound-type">💜 VENOUS ULCERS</div>
+                            <div class="wound-stats">
+                                <strong>Prevalence:</strong> 500K-600K USA, 1% overall (3% in &gt;65y)<br>
+                                <strong>Recurrence:</strong> 50-76% after healing<br>
+                                <strong>Scaffold Benefits:</strong><br>
+                                • Superior exudate management (11-23x swelling)<br>
+                                • Granulation tissue support<br>
+                                • Significant healing improvement<br>
+                                • Recurrence reduction
+                            </div>
+                        </div>
+                        <div class="wound-card surgical">
+                            <div class="wound-type">✂️ SURGICAL WOUNDS</div>
+                            <div class="wound-stats">
+                                <strong>Cost Burden:</strong> $11.7-13B annually (most expensive)<br>
+                                <strong>Scaffold Benefits:</strong><br>
+                                • Reduced contracture<br>
+                                • Organized tissue regeneration<br>
+                                • Scar prevention (16.6-fold improvement)<br>
+                                • Enhanced aesthetic outcomes
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-container" style="margin-top: 16px;">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1755524146/pplx_project_search_images/94028f5775ce763a781ca5bbbcd2bc4e3b81e859.png" alt="Burn classifications" style="max-height: 180px;">
+                        <p class="image-caption">Burn wound classification: superficial, partial-thickness, and full-thickness injuries</p>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Clinical Applications</span>
+                    <span>Slide 9 of 12</span>
+                </div>
+            </div>
+
+            <!-- Slide 10: Comparative Effectiveness -->
+            <div class="slide" data-slide="10">
+                <div class="slide-header">
+                    <h2 class="slide-title">Comparative Effectiveness Evidence</h2>
+                    <p class="slide-subtitle">Multi-Target vs. Conventional Therapy</p>
+                </div>
+                <div class="slide-content">
+                    <div class="chart-container">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px;">
+                        <div style="background: #ffebee; padding: 16px; border-radius: 8px;">
+                            <h4 style="font-size: 16px; color: #C62828; margin-bottom: 8px; font-weight: 600;">Conventional Therapy (TT)</h4>
+                            <ul style="font-size: 14px; line-height: 1.8; color: var(--color-slate-900); list-style: none; padding: 0;">
+                                <li>• Healing rate: 57.33% at 12 weeks</li>
+                                <li>• Time to healing: 10.4 ± 2.8 weeks</li>
+                                <li>• Pain (VAS): 6.2 ± 1.4</li>
+                                <li>• Wound-QoL: 44.3 ± 10.3</li>
+                                <li>• Scarring: 5.3%</li>
+                            </ul>
+                        </div>
+                        <div style="background: #e8f5e9; padding: 16px; border-radius: 8px;">
+                            <h4 style="font-size: 16px; color: #2E7D32; margin-bottom: 8px; font-weight: 600;">Multi-Target Therapy (ET)</h4>
+                            <ul style="font-size: 14px; line-height: 1.8; color: var(--color-slate-900); list-style: none; padding: 0;">
+                                <li>• Healing rate: <strong>81.33%</strong> at 12 weeks</li>
+                                <li>• Time to healing: <strong>8.0 ± 2.3 weeks</strong></li>
+                                <li>• Pain (VAS): <strong>4.7 ± 1.6</strong></li>
+                                <li>• Wound-QoL: <strong>61.8 ± 9.1</strong></li>
+                                <li>• Scarring: <strong>4.0%</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="background: var(--color-accent-teal); color: white; padding: 16px; border-radius: 8px; margin-top: 16px; text-align: center;">
+                        <p style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">Advanced dressings show 52% higher healing rates</p>
+                        <p style="font-size: 14px;">Odds Ratio: 1.52 (95% CI) | Significantly reduced patient burden and healthcare costs</p>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Comparative Effectiveness</span>
+                    <span>Slide 10 of 12</span>
+                </div>
+            </div>
+
+            <!-- Slide 11: Clinical Advantages -->
+            <div class="slide" data-slide="11">
+                <div class="slide-header">
+                    <h2 class="slide-title">Clinical Advantages &amp; Outcomes</h2>
+                    <p class="slide-subtitle">Six Key Differentiators</p>
+                </div>
+                <div class="slide-content">
+                    <div class="advantages-grid">
+                        <div class="advantage-card">
+                            <div class="advantage-icon">🎯</div>
+                            <div class="advantage-title">COMPREHENSIVE PHASE COVERAGE</div>
+                            <div class="advantage-text">All three healing phases (inflammation, proliferation, remodeling) supported simultaneously with targeted bioactive agents</div>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">⚡</div>
+                            <div class="advantage-title">DUAL ACTION MECHANISM</div>
+                            <div class="advantage-text">Synergistic combination of structural ECM-mimetic support and biochemical multi-target stimulation</div>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">👤</div>
+                            <div class="advantage-title">PATIENT-CENTERED DESIGN</div>
+                            <div class="advantage-text">Non-invasive application, no sutures required, single application provides weeks-long therapeutic coverage</div>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">🏥</div>
+                            <div class="advantage-title">CLINICAL PRACTICALITY</div>
+                            <div class="advantage-text">Room temperature storage, outpatient application, reduced follow-up visits, cost-effective long-term</div>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">📊</div>
+                            <div class="advantage-title">SUPERIOR OUTCOMES</div>
+                            <div class="advantage-text">30-50% faster closure, 16.6× scar reduction, 73-97% healing rates in diabetic ulcers vs. 50-60% conventional</div>
+                        </div>
+                        <div class="advantage-card">
+                            <div class="advantage-icon">✅</div>
+                            <div class="advantage-title">SAFETY PROFILE</div>
+                            <div class="advantage-text">Natural biocompatible components (gelatin, alginate), comprehensive safety testing, FDA-approved precedents (Integra®, Apligraf®)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Clinical Advantages</span>
+                    <span>Slide 11 of 12</span>
+                </div>
+            </div>
+
+            <!-- Slide 12: Conclusions -->
+            <div class="slide" data-slide="12">
+                <div class="slide-header">
+                    <h2 class="slide-title">Conclusions &amp; Future Directions</h2>
+                    <p class="slide-subtitle">Advancing Wound Care Through Multi-Target Innovation</p>
+                </div>
+                <div class="slide-content">
+                    <div style="background: var(--color-light-bg); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                        <h3 style="font-size: 20px; color: var(--color-medical-blue); margin-bottom: 16px;">Key Conclusions</h3>
+                        <ul class="bullet-list" style="font-size: 16px;">
+                            <li style="font-size: 16px;">Multi-bioactive GO/gelatin/alginate scaffolds address critical limitations of single-target treatments</li>
+                            <li style="font-size: 16px;">Dual ECM-mimetic approach provides structural support + biochemical stimulation simultaneously</li>
+                            <li style="font-size: 16px;">Clinical evidence demonstrates 81.3% vs. 57.3% healing rates, 30-50% faster closure</li>
+                            <li style="font-size: 16px;">Applicable across burn, diabetic, venous, and surgical wound types</li>
+                            <li style="font-size: 16px;">Patient-centered design reduces burden while improving quality of life outcomes</li>
+                        </ul>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                        <div style="background: #e3f2fd; padding: 16px; border-radius: 8px;">
+                            <h4 style="font-size: 16px; color: #1976D2; margin-bottom: 12px; font-weight: 600;">Immediate Next Steps</h4>
+                            <ul style="font-size: 13px; line-height: 1.7; color: var(--color-slate-900); list-style: disc; padding-left: 20px;">
+                                <li>Phase I/II clinical trials</li>
+                                <li>Bioactive agent optimization</li>
+                                <li>Cost-effectiveness analysis</li>
+                                <li>Regulatory pathway development</li>
+                            </ul>
+                        </div>
+                        <div style="background: #fff3e0; padding: 16px; border-radius: 8px;">
+                            <h4 style="font-size: 16px; color: #F57C00; margin-bottom: 12px; font-weight: 600;">Advanced Development</h4>
+                            <ul style="font-size: 13px; line-height: 1.7; color: var(--color-slate-900); list-style: disc; padding-left: 20px;">
+                                <li>Personalized formulations</li>
+                                <li>Smart stimulus-responsive release</li>
+                                <li>Growth factor integration</li>
+                                <li>Vascularization enhancement</li>
+                            </ul>
+                        </div>
+                        <div style="background: #f3e5f5; padding: 16px; border-radius: 8px;">
+                            <h4 style="font-size: 16px; color: #7B1FA2; margin-bottom: 12px; font-weight: 600;">Emerging Applications</h4>
+                            <ul style="font-size: 13px; line-height: 1.7; color: var(--color-slate-900); list-style: disc; padding-left: 20px;">
+                                <li>Aesthetic dermatology</li>
+                                <li>Pediatric burns</li>
+                                <li>Radiation dermatitis</li>
+                                <li>Epidermolysis bullosa</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="background: var(--color-medical-blue); color: white; padding: 16px; border-radius: 8px; margin-top: 20px; text-align: center;">
+                        <p style="font-size: 18px; font-weight: 600;">Multi-bioactive scaffolds represent a paradigm shift from single-target to comprehensive wound management</p>
+                    </div>
+                </div>
+                <div class="slide-footer">
+                    <span>Conclusions &amp; Future Directions</span>
+                    <span>Slide 12 of 12</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" id="prevBtn">← Previous</button>
+                <button class="btn btn-primary" id="nextBtn">Next →</button>
+            </div>
+            <div class="slide-indicator" id="slideIndicator">Slide 1 of 12</div>
+            <button class="btn toggle-notes" id="toggleNotes">Speaker Notes</button>
+        </div>
+    </div>
+
+    <!-- Speaker Notes Panel -->
+    <div class="speaker-notes-panel" id="notesPanel">
+        <div class="notes-content" id="notesContent"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
